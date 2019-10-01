@@ -1,0 +1,17 @@
+version: "3.4"
+
+services:
+  sponsorship:
+    build: .
+    command: ["php", "artisan", "serve", "--host=0.0.0.0"]
+    working_dir: /app
+    environment:
+      VIRTUAL_HOST: sponsorship.test
+      VIRTUAL_PORT: 8000
+    volumes:
+      - ./:/app:cached
+
+networks:
+  default:
+    external:
+      name: fuse-net
